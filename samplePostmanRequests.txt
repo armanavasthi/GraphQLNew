@@ -1,0 +1,46 @@
+Request 1:
+{
+	"query": "query{\n\tallAwards{\n\t\tid\n\t\tfield\n\t\tcountry\n\t\tname\n\t}\n}"
+}
+
+
+Request 2:
+{
+	"query": "query{\n\taward(id:3){\n\t\tid\n\t\tfield\n\t\tcountry\n\t\tname\n\t}\n}"
+}
+
+Request 3:
+{
+	"query": "query{\n\tallWinners{\n\t\tid\n\t\tfield\n\t\tcountry\n\t\tfirstName\n\t\tlastName\n\t}\n}"
+}
+
+Request 4:
+{
+	"query": "query{\n\twinner(id:2){\n\t\tid\n\t\tfield\n\t\tcountry\n\t\tfirstName\n\t\tlastName\n\t}\n}"
+}
+
+Request 5:
+{
+	"query": "mutation{\n\tdeleteAward(\n\t\tid: 6\n\t)\n}"
+}
+
+Request 6:
+{
+	"query": "mutation{\n\tnewAward(\n\t\tname: \"test Award\",\n\t\tfield: \"Test Game\"\n\t\tcountry: \"Test Country\"\n\t){\n\t\tid\n\t\tcountry\n\t\tfield\n\t\tname\n\t}\n}"
+}
+
+Request 7:
+{
+	"query": "mutation{\n\tdeleteAward(\n\t\tid: 6\n\t)\n}"
+}
+
+Request 8:
+{
+	"query": "mutation{\n\tnewWinner(\n\t\tfirstName: \"Lionel\",\n\t\tlastName: \"Messy\",\n\t\tcountry: \"Argentina\",\n\t\tfield: \"Games\",\n\t\tawards: [\n\t\t\t{\n\t\t\t\tname: \"Ballon d'or\",\n\t\t\t\tcountry: \"France\",\n\t\t\t\tfield: \"games\"\n\t\t\t},\n\t\t\t{\n\t\t\t\tname: \"UEFA Men's Player of the Year\",\n\t\t\t\tcountry: \"International\",\n\t\t\t\tfield: \"games\"\n\t\t\t},\n\t\t\t{\n\t\t\t\tname: \"FIFA Player of the Year\",\n\t\t\t\tcountry: \"European Clubs\",\n\t\t\t\tfield: \"games\"\n\t\t\t}\n\t]\n\t\t\n\t){\n\t\tid\n\t\tcountry\n\t\tfield\n\t\tfirstName\n\t\tlastName\n\t\tawards{\n\t\t\tid\n\t\t\tname\n\t\t\tfield\n\t\t\tcountry\n\t\t}\n\t}\n}"
+}
+
+Request 9:
+{
+	"query": "mutation{\n\tdeleteWinner(id: 15)\n}"
+}
+

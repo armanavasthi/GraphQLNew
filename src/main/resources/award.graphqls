@@ -1,0 +1,30 @@
+# schema{
+#	 query: Query
+# }
+# note: registering Query or Mutation in schema is not needed as long as you are creating them with name "Query" and "Mutation"
+# but if you create them by some different name like "AwardQueries" etc, then you need to register it as query in schema 
+
+
+type Query{
+	allAwards: [Award]
+	award(id: ID): Award
+}
+
+type Award{
+	id: ID
+	country: String!
+	field: String!
+	name: String!
+}
+
+input AwardInput{
+	id: ID
+	country: String!
+	field: String!
+	name: String!
+}
+
+type Mutation{
+	newAward(name: String!, field: String!, country: String!): Award! #same order must be followed while input in graphiql
+	deleteAward(id: ID!): Boolean
+}

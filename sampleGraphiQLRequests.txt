@@ -1,0 +1,116 @@
+Request 1:
+query{
+	allAwards{
+		id
+		field
+		country
+		name
+	}
+}
+
+
+Request 2:
+query{
+	award(id:3){
+		id
+		field
+		country
+		name
+	}
+}
+
+Request 3:
+query{
+	allWinners{
+		id
+		field
+		country
+		firstName
+		lastName
+	}
+}
+
+Request 4:
+query{
+	winner(id:2){
+		id
+		field
+		country
+		firstName
+		lastName
+	}
+}
+
+Request 5:
+mutation{
+	deleteAward(
+		id: 6
+	)
+}
+
+Request 6:
+mutation{
+	newAward(
+		name: "test Award",
+		field: "Test Game"
+		country: "Test Country"
+	){
+		id
+		country
+		field
+		name
+	}
+}
+
+Request 7:
+mutation{
+	deleteAward(
+		id: 6
+	)
+}
+
+Request 8:
+mutation{
+	newWinner(
+		firstName: "Lionel",
+		lastName: "Messy",
+		country: "Argentina",
+		field: "Games",
+		awards: [
+			{
+				name: "Ballon d'or",
+				country: "France",
+				field: "games"
+			},
+			{
+				name: "UEFA Men's Player of the Year",
+				country: "International",
+				field: "games"
+			},
+			{
+				name: "FIFA Player of the Year",
+				country: "European Clubs",
+				field: "games"
+			}
+	]
+		
+	){
+		id
+		country
+		field
+		firstName
+		lastName
+		awards{
+			id
+			name
+			field
+			country
+		}
+	}
+}
+
+Request 9:
+mutation{
+	deleteWinner(id: 15)
+}
+

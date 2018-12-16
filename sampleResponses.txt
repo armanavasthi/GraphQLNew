@@ -1,0 +1,247 @@
+Response 1:
+{
+	"data": {
+		"allAwards": [
+			{
+				"id": "1",
+				"field": "movies",
+				"country": "USA",
+				"name": "oscar"
+			},
+			{
+				"id": "2",
+				"field": "music",
+				"country": "USA",
+				"name": "grammy"
+			},
+			{
+				"id": "3",
+				"field": "movies",
+				"country": "USA",
+				"name": "Golden Globe"
+			},
+			{
+				"id": "4",
+				"field": "writing",
+				"country": "UK",
+				"name": "Man Booker Prize"
+			},
+			{
+				"id": "5",
+				"field": "peace",
+				"country": "India",
+				"name": "Gandhi Peace Prize"
+			},
+			{
+				"id": "6",
+				"field": "games",
+				"country": "France",
+				"name": "Ballon d'or"
+			},
+			{
+				"id": "7",
+				"field": "games",
+				"country": "International",
+				"name": "FIFA Player of the Year"
+			},
+			{
+				"id": "8",
+				"field": "games",
+				"country": "European Clubs",
+				"name": "UEFA Men's Player of the Year"
+			}
+		]
+	}
+}
+
+
+Response 2:
+{
+	"data": {
+		"award": {
+			"id": "3",
+			"field": "movies",
+			"country": "USA",
+			"name": "Golden Globe"
+		}
+	}
+}
+
+Response 3:
+{
+	"data": {
+		"allWinners": [
+			{
+				"id": "1",
+				"field": "Movie",
+				"country": "USA",
+				"firstName": "Marlon",
+				"lastName": "Brando"
+			},
+			{
+				"id": "2",
+				"field": "Music",
+				"country": "USA",
+				"firstName": "Ed",
+				"lastName": "Sheeran"
+			},
+			{
+				"id": "3",
+				"field": "Politics",
+				"country": "South Africa",
+				"firstName": "Nelson",
+				"lastName": "Mandela"
+			},
+			{
+				"id": "4",
+				"field": "Music",
+				"country": "UK",
+				"firstName": "Adele",
+				"lastName": ""
+			},
+			{
+				"id": "5",
+				"field": "Writer",
+				"country": "Germany",
+				"firstName": "Ruth Prawer",
+				"lastName": "Jhabvala"
+			},
+			{
+				"id": "6",
+				"field": "Music",
+				"country": "USA",
+				"firstName": "Al",
+				"lastName": "Pacino"
+			},
+			{
+				"id": "7",
+				"field": "Music",
+				"country": "UK",
+				"firstName": "Ben",
+				"lastName": "Kingsley"
+			},
+			{
+				"id": "8",
+				"field": "Politics",
+				"country": "Tanzania",
+				"firstName": "Julius",
+				"lastName": "Nyerere"
+			},
+			{
+				"id": "9",
+				"field": "Music",
+				"country": "Scotland",
+				"firstName": "Ewan",
+				"lastName": "McGregor"
+			},
+			{
+				"id": "10",
+				"field": "Movie",
+				"country": "Canada",
+				"firstName": "James",
+				"lastName": "Cameron"
+			},
+			{
+				"id": "13",
+				"field": "games",
+				"country": "Argentina",
+				"firstName": "Leo",
+				"lastName": "Messey"
+			}
+		]
+	}
+}
+
+Response 4:
+{
+	"data": {
+		"winner": {
+			"id": "2",
+			"field": "Music",
+			"country": "USA",
+			"firstName": "Ed",
+			"lastName": "Sheeran"
+		}
+	}
+}
+
+Response 5:
+Imp Note: Exception because in our database, award with id 6 has dependent data in award_winner table award deletion code we did not handle this. 
+
+{
+	"data": {
+		"deleteAward": null
+	},
+	"errors": [
+		{
+			"message": "Internal Server Error(s) while executing query",
+			"path": null,
+			"extensions": null
+		}
+	]
+}
+
+Response 6:
+{
+	"data": {
+		"newAward": {
+			"id": "6",
+			"country": "Test Country",
+			"field": "Test Game",
+			"name": "test Award"
+		}
+	}
+}
+
+Response 7:
+Imp Note: No Exception because in our database, this record doesn't have any dependent now 
+{
+	"data": {
+		"deleteAward": true
+	}
+}
+
+Response 8:
+IMP Note: There is one issue here. If you send award_id along with all the data, then, because of auto increment it will not create award as per our given
+id and hence while mapping it with winner, we will get error. So we are not sending ID, hence it always creates new award and maps winner with it. (not a
+right approach, but if you want to send ward id only, so that winner can be mapped with already created awards, then you may create a new mutation for that
+in mutation.java
+
+{
+	"data": {
+		"newWinner": {
+			"id": "15",
+			"country": "Argentina",
+			"field": "Games",
+			"firstName": "Lionel",
+			"lastName": "Messy",
+			"awards": [
+				{
+					"id": "13",
+					"name": "FIFA Player of the Year",
+					"field": "games",
+					"country": "European Clubs"
+				},
+				{
+					"id": "14",
+					"name": "UEFA Men's Player of the Year",
+					"field": "games",
+					"country": "International"
+				},
+				{
+					"id": "15",
+					"name": "Ballon d'or",
+					"field": "games",
+					"country": "France"
+				}
+			]
+		}
+	}
+}
+
+Response 9:
+{
+	"data": {
+		"deleteWinner": true
+	}
+}
