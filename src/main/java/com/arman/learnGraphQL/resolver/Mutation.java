@@ -27,7 +27,7 @@ public class Mutation implements GraphQLMutationResolver {
 		award.setName(name);
 		award.setCountry(country);
 		award.setField(field);
-		System.out.println("arman    =======> " + award);
+		System.out.println("New Award: " + award);
 		return awardService.saveAward(award);
 	}
 
@@ -38,19 +38,12 @@ public class Mutation implements GraphQLMutationResolver {
 	// argument order must be same as inside the mutation in schema file.
 	public Winner newWinner(String firstName, String lastName, String country, String field, Set<Award> awards) {
 		Winner winner = new Winner();
-		/*
-		 * if (id != -1) { // this is logically not needed (because the id is Auto
-		 * Generated, so whatever id you set, it will take the auto-generated only) //
-		 * so in any of the next release, this kind of issues will be removed from the
-		 * project winner.setId(id); }
-		 */
+		
 		winner.setFirstName(firstName);
 		winner.setLastName(lastName);
 		winner.setCountry(country);
 		winner.setField(field);
-		/*
-		 * for (Award award : awards) { awardService.saveAward(award); }
-		 */
+		
 		awardService.saveMultipleAwards(awards);
 		winner.setAwards(awards);
 		System.out.println("Winner is:      =====>    " + winner);
